@@ -8,11 +8,10 @@ class ApiProvider {
 
   List<Model> parse(String responseBody) {
     final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
-<<<<<<< HEAD
+
     return parsed.map<Model>((json) =>Model.fromJson(json)).toList();
-=======
-    return parsed.map<Model>((json) =>Model.fromApi(json)).toList();
->>>>>>> 01f0c6b59806b76d7a4ec52297c1b2c0beda3d40
+
+
   }
 
   Future<List> getApi() async {
@@ -27,11 +26,6 @@ class ApiProvider {
       throw Exception('Unable to fetch products from the REST API');
     }
 
-//    List<Model> hotels = List<Model>();
-//    decoded['data']?.forEach((value) {
-//      hotels.add(Model.fromApi(value));
-//    });
-//
-//    return hotels;
+
   }
 }
