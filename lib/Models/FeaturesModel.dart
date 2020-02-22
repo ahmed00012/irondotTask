@@ -5,7 +5,6 @@ class Features {
   String value;
 
 
-  Features({this.key, this.value});
 
   Features.fromJson(Map<String, dynamic> json) {
     key = json['key'];
