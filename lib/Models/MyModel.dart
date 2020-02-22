@@ -5,7 +5,6 @@ class Model {
 
   String name;
   String price;
-
   String address;
   String numBed;
   String numBath;
@@ -15,11 +14,7 @@ class Model {
   List<Features> features;
   List images;
 
-  String img1;
-  String img2;
-  String img3;
-
-  Model({ this.price, this.name, this.address, this.numBed, this.numBath, this.numParking, this.coverPhoto, this.descrption, this.features,this.images, this.img1,this.img2,this.img3});
+  
 
   Model.fromJson(Map<String, dynamic> json) {
 
@@ -36,12 +31,6 @@ class Model {
 //    List<String> imgList = images1.cast<String>();
 //    print(images1.first);
 //    images = imgList;
-//    images = json['images'];
-
-//    if(images != null){
-//   print(images.length);
-//    }
-
 
 
     if (json['features'] != null) {
