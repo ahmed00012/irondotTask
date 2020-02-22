@@ -14,9 +14,9 @@ class DetailsCard extends StatefulWidget {
   String numParking;
   String descrption;
   List<Features> features = new List<Features>();
-
   String img1;
-
+  String img2;
+  String img3;
 
   DetailsCard({this.name,
     this.price,
@@ -27,7 +27,8 @@ class DetailsCard extends StatefulWidget {
     this.descrption,
     this.features,
     this.img1,
- });
+    this.img2,
+    this.img3});
 
   @override
   _DetailsCardState createState() => _DetailsCardState();
@@ -61,18 +62,16 @@ class _DetailsCardState extends State<DetailsCard> {
                   height: 250,
                   enableInfiniteScroll: false,
                   items: <Widget>[
-                    Image.network(
-                      widget.img1.substring(1, 47),
-                    ),
-                    Image.network(widget.img1.substring(49, 95)),
-                    Image.network(widget.img1.substring(97, 143)),
+                    Image.network(widget.img1),
+                    Image.network(widget.img2),
+                    Image.network(widget.img3),
                   ],
                 ),
               ),
               footer: new Container(
 
                 color: Colors.white,
-                height: 70,
+                height: 60,
                 child: Row(
                   children: <Widget>[
                     Padding(

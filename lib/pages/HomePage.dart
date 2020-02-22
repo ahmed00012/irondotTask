@@ -11,6 +11,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<Model> hotels = new List<Model>();
+  List<String> urls;
   bool isLoading = true;
 
   @override
@@ -177,10 +178,20 @@ class _HomePageState extends State<HomePage> {
                                                             features:
                                                                 hotels[index]
                                                                     .features,
-                                                            img1: hotels[index]
-                                                                .images[0]
-                                                                .toString(),
+                                                            img1: urls[0],
+                                                            img2: urls[1],
+                                                            img3: urls[2],
                                                           )));
+
+                                              String jh=hotels[index].images.toString();
+                                              final urlRegExp = new RegExp(
+                                                  r"((https?:www\.)|(https?:\/\/)|(www\.))[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9]{1,6}(\/[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)?");
+                                              final urlMatches = urlRegExp.allMatches(jh);
+                                              urls = urlMatches.map(
+                                                      (urlMatch) => jh.substring(urlMatch.start, urlMatch.end))
+                                                  .toList();
+                                              urls.forEach((x) => print(x));
+
                                             })
                                       ],
                                     ),
