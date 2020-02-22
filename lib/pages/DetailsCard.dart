@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -31,6 +32,12 @@ class DetailsCard extends StatefulWidget {
       this.img2,
       this.img3});
 
+=======
+import 'package:flutter/material.dart';
+
+
+class DetailsCard extends StatefulWidget {
+>>>>>>> 01f0c6b59806b76d7a4ec52297c1b2c0beda3d40
   @override
   _DetailsCardState createState() => _DetailsCardState();
 }
@@ -38,6 +45,7 @@ class DetailsCard extends StatefulWidget {
 class _DetailsCardState extends State<DetailsCard> {
   @override
   Widget build(BuildContext context) {
+<<<<<<< HEAD
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue[900],
@@ -209,5 +217,8 @@ class _DetailsCardState extends State<DetailsCard> {
         ],
       ),
     );
+=======
+    return Container();
+>>>>>>> 01f0c6b59806b76d7a4ec52297c1b2c0beda3d40
   }
 }

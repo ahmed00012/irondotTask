@@ -1,8 +1,13 @@
 //class Images {
+<<<<<<< HEAD
+=======
+//List<String> images;
+>>>>>>> 01f0c6b59806b76d7a4ec52297c1b2c0beda3d40
 //String img1;
 //String img2;
 //String img3;
 //
+<<<<<<< HEAD
 //  Images({this.img1,this.img2,this.img3 });
 //
 //Images.fromJson(Map<String, dynamic> json) {
@@ -23,3 +28,11 @@
 //  return images as Map;
 //}
 //}
+=======
+//  Images.fromApi(data) {
+//    this.images = data['images'];
+//
+//
+//  }
+//}
+>>>>>>> 01f0c6b59806b76d7a4ec52297c1b2c0beda3d40

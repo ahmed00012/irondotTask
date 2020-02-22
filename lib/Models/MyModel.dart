@@ -1,15 +1,23 @@
 import 'package:irondot_task/Models/FeaturesModel.dart';
 import 'package:irondot_task/Models/ImagesModel.dart';
+<<<<<<< HEAD
 class Model {
   String id;
   String price;
   String name;
+=======
+
+class Model {
+  String name;
+  String price;
+>>>>>>> 01f0c6b59806b76d7a4ec52297c1b2c0beda3d40
   String address;
   String numBed;
   String numBath;
   String numParking;
   String coverPhoto;
   String descrption;
+<<<<<<< HEAD
   List<Features> features;
   List images;
 
@@ -50,4 +58,31 @@ class Model {
   }
 
 
+=======
+  List<Features> features = new List<Features>();
+  List<String> images = new List<String>();
+
+  Model.fromApi(data) {
+    this.name = data['name'];
+    this.price = data['price'];
+    this.address = data['address'];
+    this.numBed = data['numBed'];
+    this.numBath = data['numBath'];
+    this.numParking = data['numParking'];
+    this.coverPhoto = data['coverPhoto'];
+    this.descrption = data['description'];
+this.images = data['images'].cast<String>();
+    data['features']?.forEach(
+      (listData) => features.add(
+        Features.fromApi(listData),
+      ),
+    );
+
+//    data['images']?.forEach(
+//      (listData) => images.add(
+//          this.images = data['images']
+//      ),
+//    );
+  }
+>>>>>>> 01f0c6b59806b76d7a4ec52297c1b2c0beda3d40
 }
