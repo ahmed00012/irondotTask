@@ -14,10 +14,9 @@ class DetailsCard extends StatefulWidget {
   String numParking;
   String descrption;
   List<Features> features = new List<Features>();
-  List<String> images;
+
   String img1;
-  String img2;
-  String img3;
+
 
   DetailsCard({this.name,
     this.price,
@@ -27,10 +26,8 @@ class DetailsCard extends StatefulWidget {
     this.numParking,
     this.descrption,
     this.features,
-    this.images,
     this.img1,
-    this.img2,
-    this.img3});
+ });
 
   @override
   _DetailsCardState createState() => _DetailsCardState();
