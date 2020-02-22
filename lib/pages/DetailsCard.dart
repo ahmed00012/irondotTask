@@ -38,7 +38,8 @@ class DetailsCard extends StatefulWidget {
 
 
 
-class _DetailsCardState extends State<DetailsCard> {
+class _DetailsCardState extends State<DetailsCard> with TickerProviderStateMixin   {
+
   @override
   Widget build(BuildContext context) {
 
@@ -53,166 +54,190 @@ class _DetailsCardState extends State<DetailsCard> {
         centerTitle: true,
       ),
       body: ListView(
-        children: <Widget>[
-          new Container(
-            height: 240,
-            child: GridTile(
-              child: Container(
-                alignment: Alignment.topCenter,
-                child: CarouselSlider(
-                  height: 190,
+            children: <Widget>[
 
-                  enableInfiniteScroll: false,
-                  items: <Widget>[
-                    Image.network(widget.img1,),
-                    Image.network(widget.img2),
-                    Image.network(widget.img3),
-                  ],
-                ),
-              ),
-              footer: new Container(
 
-                color: Colors.white,
-                height: 60,
-                child: Row(
-                  children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.all(15),
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Padding(padding: EdgeInsets.all(5)),
-                        Row(
-                          children: <Widget>[
-                            Text(
-                              widget.address,
-                              style: TextStyle(fontSize: 18),
-                            ),
-                            Padding(padding: EdgeInsets.only(right: 25)),
-                            Text(
-                              "Parking : ",
-                              style: TextStyle(
-                                  fontSize: 16, color: Colors.deepPurple),
-                            ),
-                            Text(
-                              widget.numParking,
-                              style: TextStyle(fontSize: 18),
-                            ),
+          Hero(tag: Text('description'),
+              createRectTween:_createRectTween,
+               child:Column(
+                children: <Widget>[
+                  new Container(
+                    height: 240,
+                    child: GridTile(
+                      child: Container(
+                        alignment: Alignment.topCenter,
+                        child: CarouselSlider(
+                          height: 190,
+
+                          enableInfiniteScroll: false,
+                          items: <Widget>[
+                            Image.network(widget.img1,),
+                            Image.network(widget.img2),
+                            Image.network(widget.img3),
                           ],
                         ),
-                        Padding(padding: EdgeInsets.all(5)),
-                        Row(
+                      ),
+                      footer: new Container(
+
+                        color: Colors.white,
+                        height: 60,
+                        child: Row(
                           children: <Widget>[
-                            Text(
-                              "price :  ",
-                              style: TextStyle(
-                                  fontSize: 16, color: Colors.deepPurple),
-                            ),
-                            Text(
-                              widget.price,
-                              style: TextStyle(fontSize: 16),
-                            ),
                             Padding(
-                              padding: EdgeInsets.only(left: 50),
+                              padding: EdgeInsets.all(15),
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Padding(padding: EdgeInsets.all(5)),
+                                Row(
+                                  children: <Widget>[
+                                    Text(
+                                      widget.address,
+                                      style: TextStyle(fontSize: 18),
+                                    ),
+                                    Padding(padding: EdgeInsets.only(right: 25)),
+                                    Text(
+                                      "Parking : ",
+                                      style: TextStyle(
+                                          fontSize: 16, color: Colors.deepPurple),
+                                    ),
+                                    Text(
+                                      widget.numParking,
+                                      style: TextStyle(fontSize: 18),
+                                    ),
+                                  ],
+                                ),
+                                Padding(padding: EdgeInsets.all(5)),
+                                Row(
+                                  children: <Widget>[
+                                    Text(
+                                      "price :  ",
+                                      style: TextStyle(
+                                          fontSize: 16, color: Colors.deepPurple),
+                                    ),
+                                    Text(
+                                      widget.price,
+                                      style: TextStyle(fontSize: 16),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.only(left: 50),
+                                    ),
+                                    Row(
+                                      children: <Widget>[
+                                        Text(
+                                          "Beds : ",
+                                          style: TextStyle(
+                                              fontSize: 16, color: Colors.deepPurple),
+                                        ),
+                                        Text(
+                                          widget.numBed,
+                                          style: TextStyle(fontSize: 16),
+                                        )
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            Padding(padding: EdgeInsets.only(left: 60)),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(10, 5, 20, 3),
+                        child: Text(
+                          "features",
+                          style: TextStyle(
+                              fontSize: 18,
+                              color: Colors.black54,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(15, 3, 10, 5),
+                        child: Column(
+                          children: <Widget>[
+                            Row(
+                              children: <Widget>[
+                                Text(
+                                  widget.features[0].key + " : ",
+                                  style:
+                                  TextStyle(fontSize: 16, color: Colors.deepPurple),
+                                ),
+                                Text(widget.features[0].value)
+                              ],
                             ),
                             Row(
                               children: <Widget>[
                                 Text(
-                                  "Beds : ",
-                                  style: TextStyle(
-                                      fontSize: 16, color: Colors.deepPurple),
+                                  widget.features[1].key + " : ",
+                                  style:
+                                  TextStyle(fontSize: 16, color: Colors.deepPurple),
                                 ),
-                                Text(
-                                  widget.numBed,
-                                  style: TextStyle(fontSize: 16),
-                                )
+                                Text(widget.features[1].value)
                               ],
                             ),
+                            Row(
+                              children: <Widget>[
+                                Text(
+                                  widget.features[2].key + " : ",
+                                  style:
+                                  TextStyle(fontSize: 16, color: Colors.deepPurple),
+                                ),
+                                Text(widget.features[2].value)
+                              ],
+                            )
                           ],
                         ),
-                      ],
+                      )
+                    ],
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(8),
+                    child: Text(
+                      "description",
+                      style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.black54,
+                          fontWeight: FontWeight.bold),
                     ),
-                    Padding(padding: EdgeInsets.only(left: 60)),
-                  ],
-                ),
-              ),
-            ),
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.fromLTRB(10, 5, 20, 3),
-                child: Text(
-                  "features",
-                  style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.black54,
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.fromLTRB(15, 3, 10, 5),
-                child: Column(
-                  children: <Widget>[
-                    Row(
-                      children: <Widget>[
-                        Text(
-                          widget.features[0].key + " : ",
-                          style:
-                              TextStyle(fontSize: 16, color: Colors.deepPurple),
-                        ),
-                        Text(widget.features[0].value)
-                      ],
+                  ),
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(8,0, 8, 3),
+                    child: Text(
+                      widget.descrption,
+                      overflow: TextOverflow.clip,
+                      maxLines: 13,
+                      style: TextStyle(color: Colors.black45),
                     ),
-                    Row(
-                      children: <Widget>[
-                        Text(
-                          widget.features[1].key + " : ",
-                          style:
-                              TextStyle(fontSize: 16, color: Colors.deepPurple),
-                        ),
-                        Text(widget.features[1].value)
-                      ],
-                    ),
-                    Row(
-                      children: <Widget>[
-                        Text(
-                          widget.features[2].key + " : ",
-                          style:
-                              TextStyle(fontSize: 16, color: Colors.deepPurple),
-                        ),
-                        Text(widget.features[2].value)
-                      ],
-                    )
-                  ],
-                ),
-              )
+                  )
+                ],
+              ))
             ],
           ),
-          Padding(
-            padding: EdgeInsets.all(8),
-            child: Text(
-              "description",
-              style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.black54,
-                  fontWeight: FontWeight.bold),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.fromLTRB(8,0, 8, 3),
-            child: Text(
-              widget.descrption,
-              overflow: TextOverflow.clip,
-              maxLines: 13,
-              style: TextStyle(color: Colors.black45),
-            ),
-          )
-        ],
-      ),
     );
 
+  }
+
+
+  static RectTween _createRectTween(Rect begin, Rect end) {
+    return CircularRectTween(begin: begin, end: end);
+  }
+}
+
+class CircularRectTween extends RectTween {
+  CircularRectTween({Rect begin, Rect end})
+      : super(begin: begin, end: end) {}
+
+  @override
+  Rect lerp(double t) {
+    //Add implementation here
+    print(t); //Returns value from 0.0 to 1.0.
   }
 }
