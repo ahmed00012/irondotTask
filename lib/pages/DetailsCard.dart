@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -18,34 +18,32 @@ class DetailsCard extends StatefulWidget {
   String img1;
   String img2;
   String img3;
-  DetailsCard(
-      {this.name,
-      this.price,
-      this.address,
-      this.numBed,
-      this.numBath,
-      this.numParking,
-      this.descrption,
-      this.features,
-      this.images,
-      this.img1,
-      this.img2,
-      this.img3});
 
-=======
-import 'package:flutter/material.dart';
+  DetailsCard({this.name,
+    this.price,
+    this.address,
+    this.numBed,
+    this.numBath,
+    this.numParking,
+    this.descrption,
+    this.features,
+    this.images,
+    this.img1,
+    this.img2,
+    this.img3});
 
-
-class DetailsCard extends StatefulWidget {
->>>>>>> 01f0c6b59806b76d7a4ec52297c1b2c0beda3d40
   @override
   _DetailsCardState createState() => _DetailsCardState();
+
+
 }
+
+
 
 class _DetailsCardState extends State<DetailsCard> {
   @override
   Widget build(BuildContext context) {
-<<<<<<< HEAD
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue[900],
@@ -217,8 +215,6 @@ class _DetailsCardState extends State<DetailsCard> {
         ],
       ),
     );
-=======
-    return Container();
->>>>>>> 01f0c6b59806b76d7a4ec52297c1b2c0beda3d40
+
   }
 }
