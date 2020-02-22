@@ -5,6 +5,7 @@ class Model {
 
   String name;
   String price;
+
   String address;
   String numBed;
   String numBath;
@@ -12,9 +13,9 @@ class Model {
   String coverPhoto;
   String descrption;
   List<Features> features;
-  List images;
+  var images;
 
-  
+  Model({ this.price, this.name, this.address, this.numBed, this.numBath, this.numParking, this.coverPhoto, this.descrption, this.features,this.images,});
 
   Model.fromJson(Map<String, dynamic> json) {
 
@@ -26,11 +27,10 @@ class Model {
     numParking = json['numParking'];
     coverPhoto = json['coverPhoto'];
     descrption = json['descrption'];
+    images= json['images'];
 
-     images= json['images'];
-//    List<String> imgList = images1.cast<String>();
-//    print(images1.first);
-//    images = imgList;
+
+
 
 
     if (json['features'] != null) {
@@ -42,27 +42,6 @@ class Model {
 
 
 
-  Model.fromApi(data) {
-    this.name = data['name'];
-    this.price = data['price'];
-    this.address = data['address'];
-    this.numBed = data['numBed'];
-    this.numBath = data['numBath'];
-    this.numParking = data['numParking'];
-    this.coverPhoto = data['coverPhoto'];
-    this.descrption = data['description'];
-this.images = data['images'].cast<String>();
-    data['features']?.forEach(
-      (listData) => features.add(
-        Features.fromJson(listData),
-      ),
-    );
 
-//    data['images']?.forEach(
-//      (listData) => images.add(
-//          this.images = data['images']
-//      ),
-//    );
-  }
 
 }
