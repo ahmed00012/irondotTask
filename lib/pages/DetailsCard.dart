@@ -58,11 +58,13 @@ class _DetailsCardState extends State<DetailsCard> {
             height: 240,
             child: GridTile(
               child: Container(
+                alignment: Alignment.topCenter,
                 child: CarouselSlider(
-                  height: 250,
+                  height: 190,
+
                   enableInfiniteScroll: false,
                   items: <Widget>[
-                    Image.network(widget.img1),
+                    Image.network(widget.img1,),
                     Image.network(widget.img2),
                     Image.network(widget.img3),
                   ],
