@@ -35,17 +35,16 @@ class DetailsCard extends StatefulWidget {
 }
 
 class _DetailsCardState extends State<DetailsCard>
-    with TickerProviderStateMixin {
+     {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
 
       body: ListView(
         children: <Widget>[
-          Hero(
-              tag: Text('description'),
-              createRectTween: _createRectTween,
-              child: Column(
+
+
+            Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   new Container(
@@ -87,6 +86,7 @@ class _DetailsCardState extends State<DetailsCard>
                                           style: TextStyle(
                                               fontSize: 20,
                                               fontWeight: FontWeight.bold,
+
                                               color: Colors.white),
                                         ),
                                         Padding(
@@ -221,23 +221,13 @@ class _DetailsCardState extends State<DetailsCard>
                     ),
                   )
                 ],
-              ))
+              )
         ],
       ),
     );
   }
 
-  static RectTween _createRectTween(Rect begin, Rect end) {
-    return CircularRectTween(begin: begin, end: end);
-  }
+
 }
 
-class CircularRectTween extends RectTween {
-  CircularRectTween({Rect begin, Rect end}) : super(begin: begin, end: end) {}
 
-  @override
-  Rect lerp(double t) {
-    //Add implementation here
-    print(t); //Returns value from 0.0 to 1.0.
-  }
-}

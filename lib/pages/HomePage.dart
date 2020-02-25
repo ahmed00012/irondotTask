@@ -1,4 +1,3 @@
-import 'package:bottom_personalized_dot_bar/bottom_personalized_dot_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:irondot_task/Models/MyModel.dart';
@@ -10,7 +9,7 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
+class _HomePageState extends State<HomePage> {
   List<Model> hotels = new List<Model>();
   List<String> urls;
   bool isLoading = true;
@@ -37,33 +36,32 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           ? Center(
               child: CircularProgressIndicator(),
             )
-          : SingleChildScrollView(
-              child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+          : Stack(
+              alignment: Alignment.center,
               children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.fromLTRB(10, 20, 0, 0),
-                  child: Text(
-                    "Discover",
-                    style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
-                  ),
-                ),
-                ListView.builder(
-                    primary: false,
-                    shrinkWrap: true,
-                    itemCount: hotels.length,
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: EdgeInsets.all(2),
-                        child: Container(
-                            child: Column(
+                SingleChildScrollView(
+                    child: Padding(
+                  padding: EdgeInsets.all(8),
+                  child: Container(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Padding(
+                          padding: EdgeInsets.all(10),
+                          child: Text(
+                            "Discover",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 40),
+                          ),
+                        ),
+                        Column(
                           children: hotels
                               .map(
                                 (e) => Card(
                                   shape: RoundedRectangleBorder(
                                       borderRadius:
                                           BorderRadius.circular(10.0)),
-                                  elevation: 3.0,
+                                  elevation: 1.0,
                                   child: InkWell(
                                     onTap: () {
                                       Navigator.of(context).push(
@@ -72,23 +70,18 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                                   new DetailsCard(
                                                     name: e.name,
                                                     price: e.price,
-                                                    address:
-                                                        e.address,
-                                                    numBath:
-                                                        e.numBath,
-                                                    numBed:
-                                                        e.numBed,
+                                                    address: e.address,
+                                                    numBath: e.numBath,
+                                                    numBed: e.numBed,
                                                     numParking: e.numParking,
                                                     descrption: e.descrption,
-                                                    features:
-                                                        e.features,
+                                                    features: e.features,
                                                     img1: urls[0],
                                                     img2: urls[1],
                                                     img3: urls[2],
                                                   )));
 
-                                      String jh =
-                                          e.images.toString();
+                                      String jh = e.images.toString();
                                       final urlRegExp = new RegExp(
                                           r"((https?:www\.)|(https?:\/\/)|(www\.))[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9]{1,6}(\/[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)?");
                                       final urlMatches =
@@ -138,7 +131,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                                             borderRadius:
                                                                 BorderRadius
                                                                     .circular(
-                                                                        5.0)),
+                                                                        9.0)),
                                                     child: Padding(
                                                       padding:
                                                           EdgeInsets.all(4.0),
@@ -165,7 +158,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                                             borderRadius:
                                                                 BorderRadius
                                                                     .circular(
-                                                                        5.0)),
+                                                                        9.0)),
                                                     child: Padding(
                                                       padding:
                                                           EdgeInsets.all(4.0),
@@ -233,7 +226,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                             ),
                                             Padding(
                                               padding: EdgeInsets.fromLTRB(
-                                                  0, 8, 0, 8),
+                                                  0, 6, 0, 6),
                                               child: Divider(),
                                             ),
                                             Row(
@@ -291,66 +284,72 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                         Positioned(
                                             right: 20,
                                             bottom: 100,
-                                            child: FlatButton(
-                                                onPressed: null,
-                                                hoverColor: Colors.black,
-                                                child: CircleAvatar(
-                                                  backgroundColor: Colors.white,
-                                                  radius: 15,
-                                                  child: Icon(
-                                                    Icons.send,
-                                                    color: Colors.blue,
-                                                    size: 16,
-                                                  ),
-                                                ))),
+                                            child: FloatingActionButton(
+                                              heroTag: Text("d1"),
+                                              backgroundColor: Colors.white,
+                                              onPressed: null,
+                                              mini: true,
+                                              hoverColor: Colors.black,
+                                              child: Icon(
+                                                Icons.send,
+                                                color: Colors.blue,
+                                                size: 16,
+                                              ),
+                                            )),
                                       ],
                                     ),
                                   ),
                                 ),
                               )
                               .toList(),
-                        )),
-                      );
-                    }),
+                        ),
+                      ],
+                    ),
+                  ),
+                )),
+                Positioned(
+                  width: MediaQuery.of(context).size.width * 0.9,
+                  child: Card(
+                    elevation: 3,
+                    color: Colors.white,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(9.0)),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        IconButton(
+                            icon: Icon(
+                              Icons.home,
+                              color: Colors.blue,
+                            ),
+                            onPressed: null),
+                        Padding(
+                            padding: EdgeInsets.only(
+                                left:
+                                    MediaQuery.of(context).size.width * 0.15)),
+                        IconButton(
+                            icon: Icon(
+                              Icons.chat,
+                              color: Colors.blue,
+                            ),
+                            onPressed: null),
+                        Padding(
+                            padding: EdgeInsets.only(
+                                left:
+                                    MediaQuery.of(context).size.width * 0.15)),
+                        IconButton(
+                            icon: Icon(
+                              Icons.face,
+                              color: Colors.blue,
+                            ),
+                            onPressed: null),
+                      ],
+                    ),
+                  ),
+                  bottom: 15,
+                )
               ],
-            )),
-      bottomNavigationBar: BottomAppBar(
-        elevation: 4.0,
-        child: Container(
-          height: 40,
-          child: Row(
-            children: <Widget>[
-              Padding(
-                  padding: EdgeInsets.only(
-                      left: MediaQuery.of(context).size.width * 0.1)),
-              IconButton(
-                  icon: Icon(
-                    Icons.home,
-                    color: Colors.blue,
-                  ),
-                  onPressed: null),
-              Padding(
-                  padding: EdgeInsets.only(
-                      left: MediaQuery.of(context).size.width * 0.2)),
-              IconButton(
-                  icon: Icon(
-                    Icons.chat,
-                    color: Colors.blue,
-                  ),
-                  onPressed: null),
-              Padding(
-                  padding: EdgeInsets.only(
-                      left: MediaQuery.of(context).size.width * 0.2)),
-              IconButton(
-                  icon: Icon(
-                    Icons.face,
-                    color: Colors.blue,
-                  ),
-                  onPressed: null),
-            ],
-          ),
-        ),
-      ),
+            ),
     );
   }
 }
