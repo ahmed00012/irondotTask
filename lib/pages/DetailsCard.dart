@@ -1,5 +1,4 @@
-
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -18,129 +17,127 @@ class DetailsCard extends StatefulWidget {
   String img2;
   String img3;
 
-  DetailsCard({this.name,
-    this.price,
-    this.address,
-    this.numBed,
-    this.numBath,
-    this.numParking,
-    this.descrption,
-    this.features,
-    this.img1,
-    this.img2,
-    this.img3});
+  DetailsCard(
+      {this.name,
+      this.price,
+      this.address,
+      this.numBed,
+      this.numBath,
+      this.numParking,
+      this.descrption,
+      this.features,
+      this.img1,
+      this.img2,
+      this.img3});
 
   @override
   _DetailsCardState createState() => _DetailsCardState();
-
-
 }
 
-
-
-class _DetailsCardState extends State<DetailsCard> with TickerProviderStateMixin   {
-
+class _DetailsCardState extends State<DetailsCard>
+    with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.blue[900],
-        elevation: 0.0,
-        title: Text(
-          widget.name,
-          style: TextStyle(color: Colors.white),
-        ),
-        centerTitle: true,
-      ),
+
       body: ListView(
-            children: <Widget>[
-
-
-          Hero(tag: Text('description'),
-              createRectTween:_createRectTween,
-               child:Column(
+        children: <Widget>[
+          Hero(
+              tag: Text('description'),
+              createRectTween: _createRectTween,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   new Container(
-                    height: 240,
+                    height:350,
                     child: GridTile(
                       child: Container(
-                        alignment: Alignment.topCenter,
-                        child: CarouselSlider(
-                          height: 190,
 
-                          enableInfiniteScroll: false,
-                          items: <Widget>[
-                            Image.network(widget.img1,),
-                            Image.network(widget.img2),
-                            Image.network(widget.img3),
+                        width: double.infinity,
+                        child: Carousel(
+                          showIndicator: false,
+                          autoplay: false,
+                          boxFit: BoxFit.fitWidth,
+                          images: [
+                            Image.network(widget.img1,fit: BoxFit.fitWidth),
+                            Image.network(widget.img2,fit: BoxFit.fitWidth,),
+                            Image.network(widget.img3,fit: BoxFit.fitWidth),
                           ],
                         ),
                       ),
                       footer: new Container(
-
-                        color: Colors.white,
-                        height: 60,
+                        color: Colors.white.withOpacity(0.1),
+                        height: 100,
                         child: Row(
                           children: <Widget>[
-                            Padding(
-                              padding: EdgeInsets.all(15),
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+
+
+                            Row(
                               children: <Widget>[
-                                Padding(padding: EdgeInsets.all(5)),
-                                Row(
+
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
-                                    Text(
-                                      widget.address,
-                                      style: TextStyle(fontSize: 18),
-                                    ),
-                                    Padding(padding: EdgeInsets.only(right: 25)),
-                                    Text(
-                                      "Parking : ",
-                                      style: TextStyle(
-                                          fontSize: 16, color: Colors.deepPurple),
-                                    ),
-                                    Text(
-                                      widget.numParking,
-                                      style: TextStyle(fontSize: 18),
-                                    ),
-                                  ],
-                                ),
-                                Padding(padding: EdgeInsets.all(5)),
-                                Row(
-                                  children: <Widget>[
-                                    Text(
-                                      "price :  ",
-                                      style: TextStyle(
-                                          fontSize: 16, color: Colors.deepPurple),
-                                    ),
-                                    Text(
-                                      widget.price,
-                                      style: TextStyle(fontSize: 16),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 50),
-                                    ),
+                                    Padding(padding: EdgeInsets.all(3)),
                                     Row(
                                       children: <Widget>[
+                                        Padding(padding: EdgeInsets.only(left: 30)),
                                         Text(
-                                          "Beds : ",
+                                          r"$ " + widget.price,
                                           style: TextStyle(
-                                              fontSize: 16, color: Colors.deepPurple),
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.white),
                                         ),
+                                        Padding(
+                                            padding: EdgeInsets.only(right: 20)),
                                         Text(
-                                          widget.numBed,
-                                          style: TextStyle(fontSize: 16),
-                                        )
+                                          "Studio Apartment ",
+                                          style: TextStyle(
+                                              fontSize: 16,
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w500),
+                                        ),
+
                                       ],
                                     ),
+                                    Padding(padding: EdgeInsets.all(3)),
+                                   Padding(padding: EdgeInsets.only(left: 30),child:  Text(widget.address,style: TextStyle(color: Colors.white),),),
+
+
+
+                                    Column(
+                                      children: <Widget>[
+                                        Padding(padding: EdgeInsets.fromLTRB(0,9,0,9),
+                                          child: Container(width: MediaQuery.of(context).size.width ,
+                                            height: 1,
+
+                                            color: Colors.white.withOpacity(0.7),),),
+
+                                        Row(
+                                          children: <Widget>[
+
+                                            Image.asset('images/assets/bath.png',color: Colors.white,height: 25,),
+                                            Text("  "+widget.numBath + " Bath",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+                                            Padding(padding: EdgeInsets.only(left: 20)),
+                                            Image.asset('images/assets/bed.png',color: Colors.white,height: 25),
+                                            Text("  "+widget.numBed + " Bed",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+                                            Padding(padding: EdgeInsets.only(left: 20)),
+
+                                            Image.asset('images/assets/car.png',color: Colors.white,height: 25),
+                                            Text("  "+widget.numParking + " Parking",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+
+
+
+                                          ],
+                                        ),
+                                      ],
+                                    )
                                   ],
                                 ),
                               ],
                             ),
-                            Padding(padding: EdgeInsets.only(left: 60)),
+
                           ],
                         ),
                       ),
@@ -152,44 +149,50 @@ class _DetailsCardState extends State<DetailsCard> with TickerProviderStateMixin
                       Padding(
                         padding: EdgeInsets.fromLTRB(10, 5, 20, 3),
                         child: Text(
-                          "features",
+                          "Features",
                           style: TextStyle(
-                              fontSize: 18,
-                              color: Colors.black54,
+                              fontSize: 20,
                               fontWeight: FontWeight.bold),
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.fromLTRB(15, 3, 10, 5),
+                        padding: EdgeInsets.fromLTRB(15, 10, 10, 5),
                         child: Column(
                           children: <Widget>[
                             Row(
                               children: <Widget>[
                                 Text(
-                                  widget.features[0].key + " : ",
-                                  style:
-                                  TextStyle(fontSize: 16, color: Colors.deepPurple),
+                                   " Movie Theatre ",
+                                  style: TextStyle(
+                                      fontSize: 16, color: Colors.black54),
                                 ),
+                                Padding(padding: EdgeInsets.only(right: 150)),
                                 Text(widget.features[0].value)
                               ],
                             ),
+                            Padding(padding: EdgeInsets.only(bottom: 10)),
                             Row(
                               children: <Widget>[
                                 Text(
-                                  widget.features[1].key + " : ",
-                                  style:
-                                  TextStyle(fontSize: 16, color: Colors.deepPurple),
+                                   " Shopping Mall",
+                                  style: TextStyle(
+                                      fontSize: 16, color: Colors.black54),
                                 ),
+                                Padding(padding: (EdgeInsets.only(left: 150))),
                                 Text(widget.features[1].value)
                               ],
                             ),
+
+                            Padding(padding: EdgeInsets.only(bottom: 10)),
+
                             Row(
                               children: <Widget>[
                                 Text(
-                                  widget.features[2].key + " : ",
-                                  style:
-                                  TextStyle(fontSize: 16, color: Colors.deepPurple),
+                                 " Sports ",
+                                  style: TextStyle(
+                                      fontSize: 16, color: Colors.black54),
                                 ),
+                                Padding(padding: (EdgeInsets.only(left: 200))),
                                 Text(widget.features[2].value)
                               ],
                             )
@@ -199,32 +202,30 @@ class _DetailsCardState extends State<DetailsCard> with TickerProviderStateMixin
                     ],
                   ),
                   Padding(
-                    padding: EdgeInsets.all(8),
+                    padding: EdgeInsets.all(15),
                     child: Text(
-                      "description",
+                      "Description",
                       style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.black54,
+                          fontSize: 20,
+                          color: Colors.black,
                           fontWeight: FontWeight.bold),
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.fromLTRB(8,0, 8, 3),
+                    padding: EdgeInsets.fromLTRB(8, 0, 8, 3),
                     child: Text(
                       widget.descrption,
                       overflow: TextOverflow.clip,
                       maxLines: 13,
-                      style: TextStyle(color: Colors.black45),
+                      style: TextStyle(color: Colors.black54),
                     ),
                   )
                 ],
               ))
-            ],
-          ),
+        ],
+      ),
     );
-
   }
-
 
   static RectTween _createRectTween(Rect begin, Rect end) {
     return CircularRectTween(begin: begin, end: end);
@@ -232,8 +233,7 @@ class _DetailsCardState extends State<DetailsCard> with TickerProviderStateMixin
 }
 
 class CircularRectTween extends RectTween {
-  CircularRectTween({Rect begin, Rect end})
-      : super(begin: begin, end: end) {}
+  CircularRectTween({Rect begin, Rect end}) : super(begin: begin, end: end) {}
 
   @override
   Rect lerp(double t) {
